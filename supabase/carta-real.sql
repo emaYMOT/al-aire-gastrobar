@@ -4,11 +4,12 @@
 --
 -- ATENCIÓN: borra TODAS las categorías y platos actuales y los reemplaza
 -- por la carta real. Los botones del inicio y el perfil no se tocan.
+-- Necesita las subcategorías (schema.sql actualizado o subcategorias.sql).
 -- =====================================================================
 
 begin;
 
-delete from public.menu_categories;  -- borra también sus platos (on delete cascade)
+delete from public.menu_categories;  -- borra también sus subcategorías y platos (on delete cascade)
 
 -- Entradas (11)
 with c as (
@@ -75,42 +76,55 @@ from c, (values
     ('Nigiris', 'Bocados de arroz con salmón y atún servidos con mayonesa teriyaki y aderezo de aguacate con salsa de la casa. 4 bocados.', 19900, 3)
 ) as v (name, description, price, position);
 
--- Bebidas (26)
+-- Bebidas (26, en 5 subcategorías)
 with c as (
   insert into public.menu_categories (name, description, emoji, position)
   values ('Bebidas', 'Sodas, jugos, limonadas, cervezas y sangría.', '🥤', 3)
   returning id
+),
+s as (
+  insert into public.menu_subcategories (category_id, name, position)
+  select c.id, v.name, v.position
+  from c, (values
+    ('Sodas', 0),
+    ('Jugos y limonadas', 1),
+    ('Gaseosas, agua y energizantes', 2),
+    ('Cervezas', 3),
+    ('Vinos y sangrías', 4)
+  ) as v (name, position)
+  returning id, name
 )
-insert into public.menu_items (category_id, name, description, price, position)
-select c.id, v.name, v.description, v.price, v.position
-from c, (values
-    ('Soda de coco', null, 16000, 0),
-    ('Soda lychee', null, 16000, 1),
-    ('Soda frutos rojos', null, 16000, 2),
-    ('Soda frutos amarillos', null, 16000, 3),
-    ('Soda de sandía', null, 16000, 4),
-    ('Jugo en agua', null, 9000, 5),
-    ('Jugo en leche', null, 10000, 6),
-    ('Limonada de coco', null, 14000, 7),
-    ('Limonada de mango biche', null, 14000, 8),
-    ('Limonada de cereza', null, 14000, 9),
-    ('Limonada natural', null, 12000, 10),
-    ('Coca-Cola', null, 8000, 11),
-    ('Agua natural', null, 7000, 12),
-    ('Agua con gas', null, 7000, 13),
-    ('Hatsu', null, 10000, 14),
-    ('Red Bull', null, 12000, 15),
-    ('Smirnoff', null, 14000, 16),
-    ('Cerveza nacional', null, 9000, 17),
-    ('Club Colombia Dorada', null, 10000, 18),
-    ('Corona', null, 12000, 19),
-    ('Stella Artois', null, 12000, 20),
-    ('Sangría frutos rojos', null, 130000, 21),
-    ('Sangría frutos verdes', null, 130000, 22),
-    ('Sangría frutos amarillos', null, 130000, 23),
-    ('Copa de vino', null, 18000, 24),
-    ('Copa de sangría', null, 20000, 25)
-) as v (name, description, price, position);
+insert into public.menu_items (category_id, subcategory_id, name, description, price, position)
+select c.id, s.id, v.name, v.description, v.price, v.position
+from c cross join (values
+    ('Sodas', 'Soda de coco', null, 16000, 0),
+    ('Sodas', 'Soda lychee', null, 16000, 1),
+    ('Sodas', 'Soda frutos rojos', null, 16000, 2),
+    ('Sodas', 'Soda frutos amarillos', null, 16000, 3),
+    ('Sodas', 'Soda de sandía', null, 16000, 4),
+    ('Jugos y limonadas', 'Jugo en agua', null, 9000, 5),
+    ('Jugos y limonadas', 'Jugo en leche', null, 10000, 6),
+    ('Jugos y limonadas', 'Limonada de coco', null, 14000, 7),
+    ('Jugos y limonadas', 'Limonada de mango biche', null, 14000, 8),
+    ('Jugos y limonadas', 'Limonada de cereza', null, 14000, 9),
+    ('Jugos y limonadas', 'Limonada natural', null, 12000, 10),
+    ('Gaseosas, agua y energizantes', 'Coca-Cola', null, 8000, 11),
+    ('Gaseosas, agua y energizantes', 'Agua natural', null, 7000, 12),
+    ('Gaseosas, agua y energizantes', 'Agua con gas', null, 7000, 13),
+    ('Gaseosas, agua y energizantes', 'Hatsu', null, 10000, 14),
+    ('Gaseosas, agua y energizantes', 'Red Bull', null, 12000, 15),
+    ('Cervezas', 'Smirnoff', null, 14000, 16),
+    ('Cervezas', 'Cerveza nacional', null, 9000, 17),
+    ('Cervezas', 'Club Colombia Dorada', null, 10000, 18),
+    ('Cervezas', 'Corona', null, 12000, 19),
+    ('Cervezas', 'Stella Artois', null, 12000, 20),
+    ('Vinos y sangrías', 'Sangría frutos rojos', null, 130000, 21),
+    ('Vinos y sangrías', 'Sangría frutos verdes', null, 130000, 22),
+    ('Vinos y sangrías', 'Sangría frutos amarillos', null, 130000, 23),
+    ('Vinos y sangrías', 'Copa de vino', null, 18000, 24),
+    ('Vinos y sangrías', 'Copa de sangría', null, 20000, 25)
+) as v (sub, name, description, price, position)
+join s on s.name = v.sub;
 
 -- Postre (1)
 with c as (

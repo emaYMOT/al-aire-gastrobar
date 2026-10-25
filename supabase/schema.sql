@@ -36,10 +36,21 @@ create table if not exists public.menu_categories (
   created_at  timestamptz not null default now()
 );
 
+-- Secciones opcionales dentro de una categoría (ej. Bebidas → Jugos, Cervezas).
+create table if not exists public.menu_subcategories (
+  id          uuid primary key default gen_random_uuid(),
+  category_id uuid not null references public.menu_categories (id) on delete cascade,
+  name        text not null check (char_length(name) between 1 and 40),
+  position    int  not null default 0,
+  created_at  timestamptz not null default now()
+);
+
 create table if not exists public.menu_items (
   id           uuid primary key default gen_random_uuid(),
   category_id  uuid not null references public.menu_categories (id) on delete cascade,
-  name         text not null check (char_length(name) between 1 and 70),
+  -- Borrar la subcategoría no borra el plato: queda sin subcategoría.
+  subcategory_id uuid references public.menu_subcategories (id) on delete set null,
+  name        text not null check (char_length(name) between 1 and 70),
   description  text,
   price        integer not null check (price >= 0),  -- pesos colombianos, sin decimales
   image_url    text,
@@ -52,6 +63,8 @@ create table if not exists public.menu_items (
 alter table public.menu_categories add column if not exists image_url text;
 
 create index if not exists menu_items_category_idx on public.menu_items (category_id);
+create index if not exists menu_items_subcategory_idx on public.menu_items (subcategory_id);
+create index if not exists menu_subcategories_category_idx on public.menu_subcategories (category_id);
 
 -- Quiénes pueden editar. Se agregan a mano (ver README).
 create table if not exists public.admins (
@@ -72,14 +85,15 @@ as $$
 $$;
 
 grant execute on function public.is_admin() to anon, authenticated;
-grant select on public.site_settings, public.links, public.menu_categories, public.menu_items to anon, authenticated;
+grant select on public.site_settings, public.links, public.menu_categories, public.menu_subcategories, public.menu_items to anon, authenticated;
 grant update on public.site_settings to authenticated;
-grant insert, update, delete on public.links, public.menu_categories, public.menu_items to authenticated;
+grant insert, update, delete on public.links, public.menu_categories, public.menu_subcategories, public.menu_items to authenticated;
 grant select on public.admins to authenticated;
 
 alter table public.site_settings   enable row level security;
 alter table public.links           enable row level security;
 alter table public.menu_categories enable row level security;
+alter table public.menu_subcategories enable row level security;
 alter table public.menu_items      enable row level security;
 alter table public.admins          enable row level security;
 
@@ -87,6 +101,7 @@ alter table public.admins          enable row level security;
 create policy "leer perfil" on public.site_settings for select to anon, authenticated using (true);
 create policy "leer botones" on public.links for select to anon, authenticated using (is_active or (select public.is_admin()));
 create policy "leer categorias" on public.menu_categories for select to anon, authenticated using (is_active or (select public.is_admin()));
+create policy "leer subcategorias" on public.menu_subcategories for select to anon, authenticated using (true);
 create policy "leer platos" on public.menu_items for select to anon, authenticated using (is_active or (select public.is_admin()));
 create policy "ver mi rol" on public.admins for select to authenticated using (user_id = (select auth.uid()));
 
@@ -96,6 +111,8 @@ create policy "editar perfil" on public.site_settings for update to authenticate
 create policy "editar botones" on public.links for all to authenticated
   using ((select public.is_admin())) with check ((select public.is_admin()));
 create policy "editar categorias" on public.menu_categories for all to authenticated
+  using ((select public.is_admin())) with check ((select public.is_admin()));
+create policy "editar subcategorias" on public.menu_subcategories for all to authenticated
   using ((select public.is_admin())) with check ((select public.is_admin()));
 create policy "editar platos" on public.menu_items for all to authenticated
   using ((select public.is_admin())) with check ((select public.is_admin()));

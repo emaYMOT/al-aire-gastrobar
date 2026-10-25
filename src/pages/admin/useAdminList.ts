@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { bySort } from '../../lib/format'
-import { store, type Collection } from '../../lib/store'
-import type { Category, Draft, LinkButton, MenuItem } from '../../lib/types'
-
-type RowOf<C extends Collection> = C extends 'links' ? LinkButton : C extends 'menu_categories' ? Category : MenuItem
+import { store, type Collection, type RowOf } from '../../lib/store'
+import type { Draft } from '../../lib/types'
 
 /** Carga una tabla y expone acciones que actualizan la pantalla al instante y avisan si algo falla. */
 export function useAdminList<C extends Collection>(collection: C) {

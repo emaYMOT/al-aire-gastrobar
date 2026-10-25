@@ -1,11 +1,17 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import imageCompression from 'browser-image-compression'
 import { bySort } from './format'
-import { seedCategories, seedItems, seedLinks, seedSettings } from './seed'
-import type { Category, Draft, LinkButton, MenuItem, SiteSettings } from './types'
+import { seedCategories, seedItems, seedLinks, seedSettings, seedSubcategories } from './seed'
+import type { Category, Draft, LinkButton, MenuItem, SiteSettings, Subcategory } from './types'
 
-export type Collection = 'links' | 'menu_categories' | 'menu_items'
-type RowOf<C extends Collection> = C extends 'links' ? LinkButton : C extends 'menu_categories' ? Category : MenuItem
+export type Collection = 'links' | 'menu_categories' | 'menu_subcategories' | 'menu_items'
+export type RowOf<C extends Collection> = C extends 'links'
+  ? LinkButton
+  : C extends 'menu_categories'
+    ? Category
+    : C extends 'menu_subcategories'
+      ? Subcategory
+      : MenuItem
 
 export type ImageFolder = 'avatar' | 'items' | 'categories'
 
@@ -139,12 +145,13 @@ function translateError(message: string): string {
 
 // ---------------------------------------------------------------- Demo (localStorage)
 
-const DEMO_KEY = 'alaire-demo-v2'
+const DEMO_KEY = 'alaire-demo-v3'
 
 interface DemoData {
   settings: SiteSettings
   links: LinkButton[]
   menu_categories: Category[]
+  menu_subcategories: Subcategory[]
   menu_items: MenuItem[]
   session: AdminSession | null
 }
@@ -154,6 +161,7 @@ function demoStore(): DataStore {
     settings: seedSettings,
     links: seedLinks,
     menu_categories: seedCategories,
+    menu_subcategories: seedSubcategories,
     menu_items: seedItems,
     session: null,
   })
@@ -213,7 +221,14 @@ function demoStore(): DataStore {
     async remove(collection, id) {
       const data = read()
       ;(data[collection] as RowOf<Collection>[]) = (data[collection] as RowOf<Collection>[]).filter((r) => r.id !== id)
-      if (collection === 'menu_categories') data.menu_items = data.menu_items.filter((i) => i.category_id !== id)
+      // Igual que en la base: la categoría se lleva sus subcategorías y productos; la subcategoría no borra productos.
+      if (collection === 'menu_categories') {
+        data.menu_subcategories = data.menu_subcategories.filter((s) => s.category_id !== id)
+        data.menu_items = data.menu_items.filter((i) => i.category_id !== id)
+      }
+      if (collection === 'menu_subcategories') {
+        data.menu_items = data.menu_items.map((i) => (i.subcategory_id === id ? { ...i, subcategory_id: null } : i))
+      }
       write(data)
       await delay(null)
     },
@@ -258,14 +273,36 @@ export const store: DataStore = url && anonKey ? supabaseStore(createClient(url,
 
 /** Para la vista pública: solo lo visible, en orden. */
 export async function loadPublicMenu() {
-  const [categories, items] = await Promise.all([store.list('menu_categories'), store.list('menu_items')])
+  const [categories, subcategories, items] = await Promise.all([
+    store.list('menu_categories'),
+    // Si la base todavía no tiene subcategorías (falta correr subcategorias.sql), la carta se ve sin secciones.
+    store.list('menu_subcategories').catch(() => [] as Subcategory[]),
+    store.list('menu_items'),
+  ])
   const visibleCategories = categories.filter((c) => c.is_active).sort(bySort)
   const visibleItems = items.filter((i) => i.is_active).sort(bySort)
+  const sortedSubcategories = [...subcategories].sort(bySort)
   return {
     categories: visibleCategories
-      .map((category) => ({ ...category, items: visibleItems.filter((i) => i.category_id === category.id) }))
+      .map((category) => {
+        const own = visibleItems.filter((i) => i.category_id === category.id)
+        const subs = sortedSubcategories.filter((s) => s.category_id === category.id)
+        const known = new Set(subs.map((s) => s.id))
+        const sections: MenuSection[] = [
+          // Primero lo que no tiene subcategoría, sin título.
+          { id: null, name: null, items: own.filter((i) => !i.subcategory_id || !known.has(i.subcategory_id)) },
+          ...subs.map((s) => ({ id: s.id, name: s.name, items: own.filter((i) => i.subcategory_id === s.id) })),
+        ].filter((s) => s.items.length > 0)
+        return { ...category, items: sections.flatMap((s) => s.items), sections }
+      })
       .filter((c) => c.items.length > 0),
   }
+}
+
+export interface MenuSection {
+  id: string | null
+  name: string | null
+  items: MenuItem[]
 }
 
 export type PublicCategory = Awaited<ReturnType<typeof loadPublicMenu>>['categories'][number]

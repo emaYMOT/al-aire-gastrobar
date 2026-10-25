@@ -58,33 +58,58 @@
       "nombre": "Bebidas",
       "emoji": "🥤",
       "descripcion": "Sodas, jugos, limonadas, cervezas y sangría.",
-      "platos": [
-        ["Soda de coco", 16000, null],
-        ["Soda lychee", 16000, null],
-        ["Soda frutos rojos", 16000, null],
-        ["Soda frutos amarillos", 16000, null],
-        ["Soda de sandía", 16000, null],
-        ["Jugo en agua", 9000, null],
-        ["Jugo en leche", 10000, null],
-        ["Limonada de coco", 14000, null],
-        ["Limonada de mango biche", 14000, null],
-        ["Limonada de cereza", 14000, null],
-        ["Limonada natural", 12000, null],
-        ["Coca-Cola", 8000, null],
-        ["Agua natural", 7000, null],
-        ["Agua con gas", 7000, null],
-        ["Hatsu", 10000, null],
-        ["Red Bull", 12000, null],
-        ["Smirnoff", 14000, null],
-        ["Cerveza nacional", 9000, null],
-        ["Club Colombia Dorada", 10000, null],
-        ["Corona", 12000, null],
-        ["Stella Artois", 12000, null],
-        ["Sangría frutos rojos", 130000, null],
-        ["Sangría frutos verdes", 130000, null],
-        ["Sangría frutos amarillos", 130000, null],
-        ["Copa de vino", 18000, null],
-        ["Copa de sangría", 20000, null]
+      "subcategorias": [
+        {
+          "nombre": "Sodas",
+          "platos": [
+            ["Soda de coco", 16000, null],
+            ["Soda lychee", 16000, null],
+            ["Soda frutos rojos", 16000, null],
+            ["Soda frutos amarillos", 16000, null],
+            ["Soda de sandía", 16000, null]
+          ]
+        },
+        {
+          "nombre": "Jugos y limonadas",
+          "platos": [
+            ["Jugo en agua", 9000, null],
+            ["Jugo en leche", 10000, null],
+            ["Limonada de coco", 14000, null],
+            ["Limonada de mango biche", 14000, null],
+            ["Limonada de cereza", 14000, null],
+            ["Limonada natural", 12000, null]
+          ]
+        },
+        {
+          "nombre": "Gaseosas, agua y energizantes",
+          "platos": [
+            ["Coca-Cola", 8000, null],
+            ["Agua natural", 7000, null],
+            ["Agua con gas", 7000, null],
+            ["Hatsu", 10000, null],
+            ["Red Bull", 12000, null]
+          ]
+        },
+        {
+          "nombre": "Cervezas",
+          "platos": [
+            ["Smirnoff", 14000, null],
+            ["Cerveza nacional", 9000, null],
+            ["Club Colombia Dorada", 10000, null],
+            ["Corona", 12000, null],
+            ["Stella Artois", 12000, null]
+          ]
+        },
+        {
+          "nombre": "Vinos y sangrías",
+          "platos": [
+            ["Sangría frutos rojos", 130000, null],
+            ["Sangría frutos verdes", 130000, null],
+            ["Sangría frutos amarillos", 130000, null],
+            ["Copa de vino", 18000, null],
+            ["Copa de sangría", 20000, null]
+          ]
+        }
       ]
     },
     {

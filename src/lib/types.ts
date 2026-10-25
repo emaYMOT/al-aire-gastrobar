@@ -26,9 +26,18 @@ export interface Category {
   is_active: boolean
 }
 
+/** Agrupa productos dentro de una categoría (ej. Bebidas → Jugos, Cervezas). */
+export interface Subcategory {
+  id: string
+  category_id: string
+  name: string
+  position: number
+}
+
 export interface MenuItem {
   id: string
   category_id: string
+  subcategory_id: string | null
   name: string
   description: string | null
   price: number

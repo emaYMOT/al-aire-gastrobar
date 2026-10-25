@@ -82,7 +82,7 @@ export default function MenuEditor() {
         title="¿Eliminar esta categoría?"
         message={
           deletingCount > 0
-            ? `"${deleting?.name}" y sus ${deletingCount} platos se borrarán para siempre. Si solo quieres esconderla, usa el interruptor.`
+            ? `"${deleting?.name}", sus subcategorías y sus ${deletingCount} platos se borrarán para siempre. Si solo quieres esconderla, usa el interruptor.`
             : `"${deleting?.name}" se borrará de la carta.`
         }
         confirmLabel="Eliminar categoría"

@@ -1,4 +1,4 @@
-import type { Category, LinkButton, MenuItem, SiteSettings } from './types'
+import type { Category, LinkButton, MenuItem, SiteSettings, Subcategory } from './types'
 
 // Contenido de ejemplo. Es el mismo que supabase/seed.sql.
 // Las fotos (public/media/carta) salen de un video del restaurante; los nombres no coinciden, son de demostración.
@@ -21,12 +21,17 @@ export const seedCategories: Category[] = [
   { id: 'c1', name: 'Para compartir', description: 'Al centro de la mesa, como manda la casa.', image_url: 'media/carta/portada-sushi.webp', emoji: '🫓', position: 0, is_active: true },
   { id: 'c2', name: 'Fuertes', description: null, image_url: 'media/carta/portada-arroz.webp', emoji: '🔥', position: 1, is_active: true },
   { id: 'c3', name: 'Cócteles de autor', description: 'Hechos en la barra con frutas de la región.', image_url: 'media/carta/portada-humo.webp', emoji: '🍸', position: 2, is_active: true },
-  { id: 'c4', name: 'Cervezas y sin alcohol', description: null, image_url: 'media/carta/portada-maduro.webp', emoji: '🍺', position: 3, is_active: true },
+  { id: 'c4', name: 'Bebidas', description: null, image_url: 'media/carta/portada-maduro.webp', emoji: '🍺', position: 3, is_active: true },
   { id: 'c5', name: 'Postres', description: null, image_url: 'media/carta/portada-postre.webp', emoji: '🍫', position: 4, is_active: true },
 ]
 
+export const seedSubcategories: Subcategory[] = [
+  { id: 's1', category_id: 'c4', name: 'Cervezas', position: 0 },
+  { id: 's2', category_id: 'c4', name: 'Sin alcohol', position: 1 },
+]
+
 const item = (id: string, category_id: string, position: number, name: string, description: string, price: number, extra: Partial<MenuItem> = {}): MenuItem => ({
-  id, category_id, position, name, description, price, image_url: null, is_available: true, is_active: true, ...extra,
+  id, category_id, subcategory_id: null, position, name, description, price, image_url: null, is_available: true, is_active: true, ...extra,
 })
 
 export const seedItems: MenuItem[] = [
@@ -39,7 +44,9 @@ export const seedItems: MenuItem[] = [
   item('i7', 'c3', 0, 'Grafiti', 'Ron, maracuyá, jengibre y un toque de chile.', 30000, { image_url: 'media/carta/plato-humo.webp' }),
   item('i8', 'c3', 1, 'Escaleras', 'Aguardiente infusionado con mandarina, tónica y romero.', 28000),
   item('i9', 'c3', 2, 'Mirador', 'Ginebra, lulo, albahaca y limón mandarino.', 32000),
-  item('i10', 'c4', 0, 'Cerveza artesanal local', 'Pregunta por la de temporada.', 14000),
-  item('i11', 'c4', 1, 'Limonada de coco', 'Sin alcohol.', 12000, { image_url: 'media/carta/plato-maduro.webp' }),
+  item('i10', 'c4', 0, 'Cerveza artesanal local', 'Pregunta por la de temporada.', 14000, { subcategory_id: 's1' }),
+  item('i13', 'c4', 1, 'Club Colombia Dorada', '', 10000, { subcategory_id: 's1' }),
+  item('i11', 'c4', 0, 'Limonada de coco', '', 12000, { subcategory_id: 's2', image_url: 'media/carta/plato-maduro.webp' }),
+  item('i14', 'c4', 1, 'Soda de frutos rojos', 'Frutos rojos, limón y soda.', 16000, { subcategory_id: 's2' }),
   item('i12', 'c5', 0, 'Brownie de cacao del Urabá', 'Con helado de queso y arequipe.', 18000, { image_url: 'media/carta/plato-postre.webp' }),
 ]
