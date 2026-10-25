@@ -1,0 +1,9 @@
+Video de fondo de la página de inicio.
+
+Coloca aquí:
+  hero.mp4         (obligatorio)  video horizontal o vertical, 720p, sin audio, idealmente menos de 6 MB
+  hero-poster.jpg  (recomendado)  una foto fija del video; se ve mientras el video carga
+  hero.webm        (opcional)     misma versión en WebM, algo más liviana
+
+Mientras no exista hero.mp4 la página muestra una ladera de noche animada.
+Las instrucciones para comprimir el video están en el README, sección "Cambiar el video de fondo".

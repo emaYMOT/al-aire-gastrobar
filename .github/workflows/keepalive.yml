@@ -1,0 +1,21 @@
+name: Mantener Supabase activo
+
+# El plan gratis de Supabase pausa el proyecto tras ~7 días sin uso.
+# Esta consulta liviana cada 3 días lo evita aunque nadie visite la web.
+on:
+  schedule:
+    - cron: '0 12 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar la base de datos
+        env:
+          URL: ${{ secrets.VITE_SUPABASE_URL }}
+          KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: |
+          curl --fail --silent --show-error \
+            "$URL/rest/v1/site_settings?select=name" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY"

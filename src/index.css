@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/*
+  Al Aire · Comuna 13
+  Un salón a media luz: negro cálido, luz ámbar que se difumina desde arriba
+  y un acento cobre. Cormorant Garamond para títulos; Onest para leer.
+*/
+@theme {
+  --color-noche: #110d0a;
+  --color-noche-2: #1d1712;
+  --color-noche-3: #2b221b;
+  --color-cobre: #d97a42;
+  --color-cobre-2: #e88b55;
+  --color-cal: #f2eadf;
+  --color-niebla: #b3a593;
+  --color-grafiti: #e8705e;
+
+  --color-papel: #f6f2ec;
+  --color-tinta: #1a1410;
+  --color-gris: #6c5f52;
+  --color-linea: #e7ded3;
+  --color-peligro: #b03a29;
+  --color-exito: #3f8f5b;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Onest", system-ui, sans-serif;
+  --font-precio: "Fraunces", Georgia, serif;   /* solo los precios de la carta */
+}
+
+html, body, #root { min-height: 100%; }
+
+/* Cormorant es fina: en semibold conserva la elegancia y se lee bien sobre fotos y video. */
+.font-display { font-weight: 600; letter-spacing: -0.005em; }
+html {
+  touch-action: manipulation;           /* sin el retraso de 300 ms al tocar */
+  scroll-padding-top: 5rem;             /* el foco no queda tapado por la barra fija */
+}
+button, a, label, select, summary, [role=button], input[type=checkbox] { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+body {
+  margin: 0;
+  background: var(--color-noche);
+  color: var(--color-cal);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cobre);
+  outline-offset: 3px;
+}
+
+/* Luz cálida difuminada desde arriba a la derecha, como una lámpara sobre la barra. */
+.ambiente {
+  background:
+    radial-gradient(110% 60% at 90% -8%, rgba(217, 122, 66, .34), rgba(120, 60, 25, .12) 45%, transparent 75%),
+    radial-gradient(60% 40% at 10% 0%, rgba(120, 72, 40, .18), transparent 70%),
+    var(--color-noche);
+  background-attachment: fixed;
+}
+
+/* Botones de vidrio del inicio: el desenfoque va dentro del botón, sobre el video. */
+.vidrio {
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0) 60%);
+}
+
+/* Etiqueta pequeña en mayúsculas espaciadas, en cobre. */
+.etiqueta {
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--color-cobre);
+}
+
+/* Un solo momento coreografiado: el inicio enciende sus luces en cascada. */
+@keyframes encender {
+  from { opacity: 0; transform: translateY(14px); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.encender {
+  animation: encender 700ms cubic-bezier(.2,.7,.2,1) both;
+  animation-delay: calc(var(--i, 0) * 50ms + 120ms);
+}
+
+/* Luces de las casas de la ladera, usadas mientras no hay video. */
+@keyframes titilar {
+  0%, 100% { opacity: .95; }
+  50% { opacity: .45; }
+}
+.luz { animation: titilar var(--d, 4s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+
+/* Transición entre páginas (navegadores con View Transitions). */
+::view-transition-old(root) { animation: 180ms ease-in both salir; }
+::view-transition-new(root) { animation: 260ms ease-out both entrar; }
+@keyframes salir { to { opacity: 0; } }
+@keyframes entrar { from { opacity: 0; transform: translateY(8px); } }
+
+/* Ventanas del panel: suben desde abajo (respuesta a la acción de abrir). */
+@keyframes subir { from { transform: translateY(24px); opacity: 0; } }
+.modal[open] { animation: subir 220ms ease-out; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .encender, .luz, .modal[open] { animation: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+  html { scroll-behavior: auto; }
+}
