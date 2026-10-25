@@ -84,9 +84,9 @@ function CategoryItems({ category, index }: { category: PublicCategory; index: n
       </header>
       {category.description && <p className="mt-5 max-w-[48ch] px-1 text-cal/80 [text-shadow:0_1px_8px_rgba(17,13,10,.9)]">{category.description}</p>}
 
-      <ul className="vidrio mt-5 divide-y divide-white/8 rounded-[1.75rem] border border-white/10 bg-noche/55 px-5 shadow-[inset_0_1px_0_rgba(255,255,255,.08)]">
+      <ul className="mt-5 flex flex-col gap-3">
         {category.items.map((item) => (
-          <li key={item.id} className="flex gap-4 py-5">
+          <li key={item.id} className="vidrio flex gap-4 rounded-3xl border border-white/10 bg-noche/55 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_12px_30px_-18px_rgba(0,0,0,.8)] sm:p-5">
             <div className="min-w-0 flex-1">
               <div className="flex items-baseline justify-between gap-3">
                 <h2 className="text-[1.0625rem] leading-snug font-semibold text-cal">{item.name}</h2>
