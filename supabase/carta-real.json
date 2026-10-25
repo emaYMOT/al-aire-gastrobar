@@ -1,0 +1,139 @@
+{
+  "_fuente": "Menu restaurante Al Aire Gastrobar comuna 13.pdf (16 páginas). Precios en pesos colombianos. Sin fotos todavía.",
+  "categorias": [
+    {
+      "nombre": "Entradas",
+      "emoji": "🥗",
+      "descripcion": null,
+      "platos": [
+        ["Carpaccio de pera y salmón ahumado", 26900, "Experiencia en mesa. Lonjas de pera marinada con duraznos y salmón ahumado acompañado de queso azul, nueces, tomates perla, pistacho y un toque cítrico con miel de yuzu. “Un plato fresco, elegante y con muchos matices de sabor”."],
+        ["Taco maré del Pacífico", 35900, "Nuestro coctel de camarones servido en taco nori crujiente con terrificación de plátano, una mezcla de aguacate y salsa cítrica de la casa. “Un sabor que evoca la marea fresca, vibrante y con carácter”."],
+        ["Ceviche de pesca blanca", 30900, "Pesca fresca blanca servida con nuestra leche de tigre de coco ahumado, acompañada de camote, vegetales frescos y maíz crocante con notas tostadas. “Una mezcla equilibrada, profunda y llena de contraste”."],
+        ["Cítrico de chicharrón", 26900, "Nuestra versión crocante isleña, cremosa y ácida del ceviche de chicharrón, servido con suero, mermelada de ají limo peruano, aguacate y crocantes de plátano. “Un sabor intenso, inesperado y absolutamente adictivo”."],
+        ["Roll crunch de pollo dorado", 28900, "Dos bocados de pollo crujiente relleno de mango marinado en osmosis de ron, gel de coco, acompañado de una salsa chutney aromatizada con especias y profundidad de Medio Oriente. “Un contraste de sabor, color y aromas intensos”."],
+        ["Ritual de ahumado y res", 37900, "Experiencia en mesa. Ceviche de solomito seleccionado de res, marinado en pimientos ahumados, con notas cítricas, servido con croqueta de arroz cremoso de quesos madurados, salsa de ajo, miel y cilantro y cebolla crispy caramelizada con nuestra salsa teriyaki, ahumado en bruma de roble."],
+        ["Conos crispy de atún", 34900, "Experiencia en mesa. Tartar de atún tuna seleccionado, servido en cucuruchos crujientes, acompañados de salsa de aguacate y miel con notas de mango, maracuyá y siracha. “Una mezcla de sabores y texturas frescas, suaves y tropicales”."],
+        ["Glaseado de pera y queso brie", 26900, "Experiencia en mesa. Pera glaseada al horno, rellena de queso maduro, arándanos y nueces, queso brie fundido con caramelo de romero y jarabe. “Una experiencia delicada, melosa, fresca y ahumada en frío”."],
+        ["Croquetas del Mediterráneo", 22900, "Tres bocados crujientes de res y vegetales que contrastan con la suavidad de una espuma de queso parmesano, aderezo de ajo, reducción de balsámico de moras y tomates perla marinados."],
+        ["Marranitas", 22900, "Cuatro bocados crujientes de plátano maduro y chicharrón que contrastan con la suavidad de una espuma de suero. “Una combinación entre lo dulce y lo salado”."],
+        ["Lluvia de nachos", 25000, "Una explosión de sabores: nachos crujientes cubiertos con res desmechada, guacamole artesanal, sour cream, salsa cheddar, queso parmesano y piña dulce a la parrilla. Ideal para compartir."]
+      ]
+    },
+    {
+      "nombre": "Platos fuertes",
+      "emoji": "🔥",
+      "descripcion": null,
+      "platos": [
+        ["Glasé de pollo", 45900, "Pechuga glaseada al horno con maple de arándanos y reducción balsámica, servida con puré nativo de batata ahumada, vegetales grillados en finas hierbas y pistacho. “Un plato meloso, jugoso y con una intensidad de sabor”."],
+        ["Solomito de cerdo con aire de lima", 42900, "Medallones de solomito de cerdo en costra de hierbas, servido con duquesa de papa rellena de vegetales asados con aderezo de albahaca, salsa de moras y aire de lima cítrico. Contraste de sabores ácidos frescos y texturas suaves."],
+        ["Lomito de res trufado", 58900, "Solomito de res asado en costra de hierbas, bañado en salsa de hongos silvestres trufados, arroz cremoso verde aromatizado con cerveza y nueces, servido con bouquet de tierra de verduras, tomates perla y mézclum de lechugas. “Muy aromático, al punto y de sabores potentes”."],
+        ["Solomito de res napado", 58900, "Medallón de res servido con salsa de vino tinto sobre puré cremoso de papa trufado con tomates secos, acompañado de vegetales a la parrilla y espuma de queso parmesano. Suave, cremoso, con contrastes intensos de sabor."],
+        ["Pollo romesco", 44900, "Pechuga de pollo grillé, servida con arroz cremoso de coco, ensalada fresca de temporada con frutas glaseadas en reducción balsámica y salsa romesco de tomates secos y pimientos."],
+        ["Costillas flambeadas", 62900, "Costillas de cerdo en cocción lenta con nuestra BBQ de lulo Jack Daniel's, flambeadas en mesa y servidas con ensalada fresca de temporada y papas crocantes con polvo de pimientos, perejil y ajo asado. “Jugosidad e intensidad de sabor con notas tropicales y fuego intenso”."],
+        ["Risotto de mar y tierra", 54900, "Risotto cremoso aromatizado con vino de la casa, servido con una mezcla de camarones y puntas de solomito de res, con toques de almendra y reducción balsámica. “Una mezcla envolvente, suave y con equilibrio entre lo tostado y lo profundo”."],
+        ["Meloso de origen", 47900, "Arroz meloso costero del Mediterráneo perfumado con cerveza rubia, salsa de pimientos y tomates secos, servido con langostinos grillados, puntas de solomito de res y coronado con ensalada acevichada con aguacate ahumado y tomates perla. “Sabores potentes, texturas melosas y ácido envolvente”."],
+        ["Travesía del muelle", 39900, "Langostinos asados al punto sobre crema de ají amarillo perfumada con notas de pisco, puré de papa guarnecido con ensalada cítrica, aguacate, tomates perla, mézclum, aire de limón y terrificación de arvejas frescas. “Un plato que contrasta sabores intensos y texturas del mar”."],
+        ["Bajo la campana", 48900, "Experiencia en mesa. Fetuccini mar y tierra con camarones y solomito salteado en finas hierbas, crema de ají panca y tomates secos, servido con calabacines asados y champiñones, con notas de pimientos ahumados en roble. “Un plato envolvente, cremoso y con experiencia aromática”."],
+        ["Chancho del Cusco", 47900, "Tocino de cerdo asado en cocción lenta con notas de ají limo y panca, acompañado de un ceviche de mango, puré de papa ahumado y aire cítrico de limón mandarino achotado. Crujiente y en balance entre lo graso, lo cítrico y lo cálido."],
+        ["Tacos de cochinillo", 35900, "Cochinita pibil jugosa servida con vegetales acevichados, crema de aguacate ahumado y mermelada de ají amarillo con mango marinado en ron Jamaica."],
+        ["Salmón en osmosis", 68900, "Filete de salmón fresco asado al punto, servido sobre espejo cítrico de naranja, falso caviar de mora, arroz cremoso de hongos y ensalada fresca de temporada. “Una experiencia de sabor y color mediante la osmosis de mora y vino tinto”."],
+        ["Tataki de atún encostrado", 60900, "Filete de atún tuna encostrado en sésamo negro y blanco, aromatizado con finas hierbas, servido sobre salsa cremosa de vino blanco marmoleado, vegetales glaseados y crocantes de arroz con reducción balsámica. “Delicado e intenso en sabor”."],
+        ["Pollo Pirés Jerk", 46900, "Pechuga de pollo en una mezcla de especias aromáticas con ron de coco, servida con ensalada fresca de temporada y papas crocantes con polvo de pimientos, perejil y ajo asado. Sabores tropicales, frescos y nativos."],
+        ["Menú infantil", 25000, "A elegir: 5 bastones de pollo acompañados de papas crocantes en espiral, o 3 croquetas de res acompañadas de papas crocantes en espiral."],
+        ["Trío de mini burgers", 40000, "Tres mini hamburguesas que lo tienen todo: carne de res de la casa, pan artesanal, mozzarella fundida, cebolla caramelizada, lechuga fresca y nuestro irresistible dip de tocineta. Servidas con una generosa porción de papas a la francesa. ¡Perfectas para compartir… o no!"]
+      ]
+    },
+    {
+      "nombre": "Rollos de sushi",
+      "emoji": "🍣",
+      "descripcion": null,
+      "platos": [
+        ["Bocados asiáticos", 23900, "Arroz de sushi al punto coronado con kanikama de cangrejo y salsa dinamita de la casa, falso caviar de yuzu y crema de aguacate. 4 bocados."],
+        ["Spicy tuna roll", 39900, "Elaborado con arroz premium, puerro crocante, pepino y mango, con cubierta de aguacate y atún tuna, notas de ají amarillo y sésamo negro; se acompaña con aderezo de la casa."],
+        ["Salmón nutty roll", 43900, "Elaborado con arroz invertido, relleno de salmón fresco marinado, pepino y aderezo teriyaki, cubierto de kanikama, dinamita y almendras tostadas con mayonesa de maracuyá."],
+        ["Nigiris", 19900, "Bocados de arroz con salmón y atún servidos con mayonesa teriyaki y aderezo de aguacate con salsa de la casa. 4 bocados."]
+      ]
+    },
+    {
+      "nombre": "Bebidas",
+      "emoji": "🥤",
+      "descripcion": "Sodas, jugos, limonadas, cervezas y sangría.",
+      "platos": [
+        ["Soda de coco", 16000, null],
+        ["Soda lychee", 16000, null],
+        ["Soda frutos rojos", 16000, null],
+        ["Soda frutos amarillos", 16000, null],
+        ["Soda de sandía", 16000, null],
+        ["Jugo en agua", 9000, null],
+        ["Jugo en leche", 10000, null],
+        ["Limonada de coco", 14000, null],
+        ["Limonada de mango biche", 14000, null],
+        ["Limonada de cereza", 14000, null],
+        ["Limonada natural", 12000, null],
+        ["Coca-Cola", 8000, null],
+        ["Agua natural", 7000, null],
+        ["Agua con gas", 7000, null],
+        ["Hatsu", 10000, null],
+        ["Red Bull", 12000, null],
+        ["Smirnoff", 14000, null],
+        ["Cerveza nacional", 9000, null],
+        ["Club Colombia Dorada", 10000, null],
+        ["Corona", 12000, null],
+        ["Stella Artois", 12000, null],
+        ["Sangría frutos rojos", 130000, null],
+        ["Sangría frutos verdes", 130000, null],
+        ["Sangría frutos amarillos", 130000, null],
+        ["Copa de vino", 18000, null],
+        ["Copa de sangría", 20000, null]
+      ]
+    },
+    {
+      "nombre": "Postre",
+      "emoji": "🍫",
+      "descripcion": null,
+      "platos": [
+        ["Tentación", 25900, "Brownie con un espejo de tres leches, bañado en Milo, acompañado de helado de vainilla y salsa de caramelo salado."]
+      ]
+    },
+    {
+      "nombre": "Coctelería de autor",
+      "emoji": "🍸",
+      "descripcion": null,
+      "platos": [
+        ["Al Aire", 35000, "Ginebra y notas cítricas de limón y triple sec, equilibradas con un sutil toque dulce y un ligero picante. Coronado con espuma cítrica y terminado con ahumado en mesa que intensifica sus aromas. Fresco, aromático y con carácter."],
+        ["Cromático", 38000, "Vodka con puré de lichi y frutos rojos, equilibrado con limón y tónica de rosas. Acompañado de caviar de frutos rojos y pétalos nitrogenados que aportan un toque visual y sensorial único. Refrescante, floral y sorprendente."],
+        ["Roble de otoño", 38000, "Whisky con notas de manzana y vermut seco, realzado con un toque de angostura. Se presenta con manzana fresca caramelizada en mesa, liberando aromas dulces y especiados. Elegante, cálido y envolvente."],
+        ["Malibu matcha", 40000, "Ron blanco y coco con piña y jengibre, fusionados con un toque de matcha. Acompañado de helado nitrogenado preparado en mesa con notas de coco y lichi. Exótico, cremoso y refrescante."],
+        ["Rojo ancestral", 40000, "Aguardiente con limón y sirope de panela, combinado en textura frappé y realzado con un toque de angostura. Servido sobre puré de frutos rojos, decorado con brocheta frutal. Refrescante, frutal y con esencia tradicional."],
+        ["Cosmic glow", 38000, "Ron y aguardiente con frutas amarillas y limón, equilibrados y refrescantes. Finalizado con un toque de curaçao azul y aromatizado con spray cítrico en mesa. Vibrante, aromático y cautivador."],
+        ["Magic air", 38000, "Aguardiente y vodka con notas de piña, jengibre y betabel morado. Se transforma con gotas cítricas y se finaliza con un toque ahumado de romero en mesa. Intenso, aromático y sorprendente."],
+        ["Golden pasión", 38000, "Ginebra y prosecco con maracuyá, limón y albahaca, en doble colado para una textura suave. Finalizado con tónica de enebro y flor de saúco, en una presentación aromática. Refrescante, floral y con una sorpresa de fuego asiático elegante en mesa."],
+        ["Don Ramón", 38000, "Tequila y triple sec con limón y chile guajillo, balanceados con frutas amarillas. Copa con sal de flor de jamaica e hielo con ají pajarito, terminado con un flambeado en mesa con tequila reposado. Poco picante, cítrico y visual."]
+      ]
+    },
+    {
+      "nombre": "Coctelería clásica",
+      "emoji": "🍹",
+      "descripcion": null,
+      "platos": [
+        ["Moscow Mule", 35000, null],
+        ["Aperol Spritz", 30000, null],
+        ["Mojito", 28000, null],
+        ["Margarita", 38000, null],
+        ["Daiquirí", 32000, null],
+        ["Whiskey Sour", 36000, null],
+        ["Pisco Sour", 38000, null],
+        ["Negroni", 38000, null],
+        ["Old Fashioned", 32000, null],
+        ["Caipiroska", 32000, null],
+        ["Cuba Libre", 28000, null],
+        ["Long Island", 40000, null],
+        ["Paloma", 38000, null],
+        ["Gin Tonic", 35000, null],
+        ["Espresso Martini", 32000, null],
+        ["Dry Martini", 30000, null],
+        ["Cosmopolitan", 34000, null]
+      ]
+    }
+  ]
+}
