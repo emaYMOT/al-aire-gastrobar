@@ -18,7 +18,7 @@ export default function Menu() {
         </Link>
 
         <header className="mt-6 px-1">
-          <h1 id="titulo-carta" className="font-display text-[3.25rem] leading-none sm:text-[4.5rem]">La carta</h1>
+          <h1 id="titulo-carta" className="font-display text-[3.25rem] leading-none sm:text-[4.5rem]">Nuestra carta</h1>
           <p className="mt-4 text-niebla">Elige qué se te antoja.</p>
         </header>
 
