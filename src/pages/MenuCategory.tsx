@@ -74,7 +74,7 @@ function CategoryItems({ category, index }: { category: PublicCategory; index: n
   const titled = category.sections.filter((s) => s.name)
   return (
     <>
-      <header className="relative h-[clamp(12rem,52vw,19rem)] overflow-hidden rounded-[1.75rem] ring-1 ring-white/8">
+      <header className="relative isolate h-[clamp(12rem,52vw,19rem)] overflow-hidden rounded-[1.75rem] [clip-path:inset(0_round_1.75rem)]">
         <CategoryCover category={category} index={index} eager />
         <div className="absolute inset-0 bg-gradient-to-t from-noche/95 via-noche/30 via-50% to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
@@ -83,6 +83,7 @@ function CategoryItems({ category, index }: { category: PublicCategory; index: n
           </span>
           <h1 className="mt-2 font-display text-[2.6rem] leading-[1.02] text-balance sm:text-[3.25rem]">{category.name}</h1>
         </div>
+        <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-white/8 ring-inset" />
       </header>
       {category.description && <p className="mt-5 max-w-[48ch] px-1 text-cal/80 [text-shadow:0_1px_8px_rgba(17,13,10,.9)]">{category.description}</p>}
 

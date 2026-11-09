@@ -46,7 +46,7 @@ export default function Home() {
                       key={link.id}
                       to="/carta"
                       viewTransition
-                      className={`${button} encender border-cobre/55 bg-cobre/30 shadow-[inset_0_1px_0_rgba(255,214,180,.35),0_12px_40px_-14px_rgba(217,122,66,.9)] hover:border-cobre/80 hover:bg-cobre/45`}
+                      className={`${button} encender border-cobre/55 bg-cobre/30 shadow-[inset_0_1px_0_rgba(255,214,180,.35),0_12px_40px_-14px_rgba(240,160,112,.9)] hover:border-cobre/80 hover:bg-cobre/45`}
                       style={style}
                     >
                       <LinkIcon name={link.icon} size={22} className="absolute left-6 text-cobre-2" />

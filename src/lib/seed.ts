@@ -5,7 +5,7 @@ import type { Category, LinkButton, MenuItem, SiteSettings, Subcategory } from '
 // Los precios y platos son de muestra: el restaurante los reemplaza desde el panel.
 
 export const seedSettings: SiteSettings = {
-  name: 'Al Aire Gastrobar',
+  name: 'Al Aire',
   description: 'Cocina de vanguardia para el barrio. La única regla es compartir, disfrutar y crear memoria en cada sabor.\nSan Javier, Comuna 13, Medellín',
   avatar_url: null,
 }

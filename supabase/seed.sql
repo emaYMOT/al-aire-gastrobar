@@ -5,7 +5,7 @@
 -- =====================================================================
 
 insert into public.site_settings (id, name, description)
-values (1, 'Al Aire Gastrobar', E'Cocina de vanguardia para el barrio. La única regla es compartir, disfrutar y crear memoria en cada sabor.\nSan Javier, Comuna 13, Medellín')
+values (1, 'Al Aire', E'Cocina de vanguardia para el barrio. La única regla es compartir, disfrutar y crear memoria en cada sabor.\nSan Javier, Comuna 13, Medellín')
 on conflict (id) do nothing;
 
 insert into public.links (label, type, url, icon, position) values

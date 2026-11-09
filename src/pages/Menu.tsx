@@ -39,7 +39,7 @@ export default function Menu() {
               <Link
                 to={`/carta/${category.id}`}
                 viewTransition
-                className="group relative block h-[clamp(13.5rem,62vw,22rem)] overflow-hidden rounded-[1.75rem] bg-noche-2/30 ring-1 ring-white/8 transition hover:ring-cobre/50 active:scale-[.99]"
+                className="group relative isolate block h-[clamp(13.5rem,62vw,22rem)] overflow-hidden rounded-[1.75rem] bg-noche-2/30 transition [clip-path:inset(0_round_1.75rem)] active:scale-[.99]"
               >
                 <CategoryCover category={category} index={index} eager={index < 2} />
                 {/* Difuminado para que el nombre se lea sobre cualquier foto. */}
@@ -52,10 +52,12 @@ export default function Menu() {
                     <h2 className="mt-2 font-display text-[2.1rem] leading-[1.02] text-cal text-balance sm:text-[2.75rem]">{category.name}</h2>
                     {category.description && <p className="mt-2 line-clamp-1 max-w-[46ch] text-sm text-cal/70">{category.description}</p>}
                   </div>
-                  <span className="grid size-12 shrink-0 place-items-center rounded-full bg-cobre text-noche shadow-[0_10px_30px_-10px_rgba(217,122,66,.9)] transition group-hover:translate-x-1">
+                  <span className="grid size-12 shrink-0 place-items-center rounded-full bg-cobre text-noche shadow-[0_10px_30px_-10px_rgba(240,160,112,.9)] transition group-hover:translate-x-1">
                     <ArrowRight size={20} aria-hidden />
                   </span>
                 </div>
+                {/* Aro por dentro: así no deja píxeles claros en las esquinas redondeadas. */}
+                <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-white/8 ring-inset transition group-hover:ring-cobre/50" />
               </Link>
             </li>
           ))}
