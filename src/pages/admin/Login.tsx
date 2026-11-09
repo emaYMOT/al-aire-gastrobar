@@ -29,7 +29,7 @@ export default function Login({ onSignedIn }: { onSignedIn: (session: AdminSessi
   return (
     <main className="grid min-h-dvh place-items-center px-5 py-10">
       <form onSubmit={submit} className="w-full max-w-sm rounded-3xl border border-linea bg-white p-7 shadow-sm">
-        <p className="font-display text-3xl">al aire</p>
+        <p className="font-display text-3xl">Al Aire Gastrobar</p>
         <h1 className="mt-1 text-gris">Entra para editar la página y la carta.</h1>
 
         {demo ? (

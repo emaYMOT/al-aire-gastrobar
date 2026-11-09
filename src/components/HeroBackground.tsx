@@ -53,7 +53,7 @@ export default function HeroBackground({ dim = false }: { dim?: boolean }) {
       {/* Abajo, donde va el texto, se oscurece del todo para que se lea. */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-noche/[17.5%] via-50% to-noche/[37.5%]" />
       {/* En la carta, una capa más oscura para leer platos y precios; se funde al cambiar de página. */}
-      <div className={`absolute inset-0 bg-noche/30 transition-opacity duration-700 ease-out ${dim ? 'opacity-100' : 'opacity-0'}`} />
+      <div className={`absolute inset-0 bg-noche/15 transition-opacity duration-700 ease-out ${dim ? 'opacity-100' : 'opacity-0'}`} />
     </div>
   )
 }

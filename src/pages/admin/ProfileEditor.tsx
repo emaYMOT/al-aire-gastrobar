@@ -61,10 +61,6 @@ export default function ProfileEditor() {
           <Button onClick={submit} busy={busy} disabled={!dirty}>Guardar perfil</Button>
         </div>
       </div>
-
-      <p className="mt-6 rounded-2xl bg-white px-5 py-4 text-sm text-gris">
-        El video de fondo se cambia en el repositorio de GitHub, reemplazando el archivo <code className="rounded bg-papel px-1.5 py-0.5 text-tinta">public/media/hero.mp4</code>. Los pasos están en el README.
-      </p>
     </>
   )
 }

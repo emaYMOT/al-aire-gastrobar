@@ -5,7 +5,7 @@ import Modal, { Button, CancelButton, ConfirmDialog } from '../../components/Mod
 import SortableList, { MoveControls, moveInList, RowAction } from '../../components/SortableList'
 import { Switch } from '../../components/Toggle'
 import { isValidUrl, normalizeUrl } from '../../lib/format'
-import { guessIcon, ICONS, LinkIcon, type IconKey } from '../../lib/icons'
+import { GRUPOS_ICONOS, guessIcon, ICONS, LinkIcon, type IconKey } from '../../lib/icons'
 import type { Draft, LinkButton, LinkType } from '../../lib/types'
 import { EmptyState, PageTitle } from './AdminApp'
 import { useAdminList } from './useAdminList'
@@ -169,24 +169,29 @@ function LinkForm({ initial, onSave, onClose, onDelete, move }: { initial: Draft
 
         <fieldset>
           <legend className="mb-2 font-medium">Ícono</legend>
-          <div className="grid grid-cols-6 gap-2 sm:grid-cols-8">
-            {(Object.keys(ICONS) as IconKey[]).map((key) => (
-              <button
-                key={key}
-                type="button"
-                title={ICONS[key].label}
-                aria-label={ICONS[key].label}
-                aria-pressed={draft.icon === key}
-                onClick={() => {
-                  setIconTouched(true)
-                  set({ icon: key })
-                }}
-                className={`grid aspect-square place-items-center rounded-xl border-2 transition ${draft.icon === key ? 'border-cobre bg-cobre/15' : 'border-transparent bg-papel hover:border-linea'}`}
-              >
-                <LinkIcon name={key} />
-              </button>
-            ))}
-          </div>
+          {GRUPOS_ICONOS.map((grupo) => (
+            <div key={grupo} className="mb-3">
+              <h3 className="mb-1.5 text-xs font-semibold tracking-wider text-gris uppercase">{grupo}</h3>
+              <div className="grid grid-cols-6 gap-2 sm:grid-cols-8">
+                {(Object.keys(ICONS) as IconKey[]).filter((key) => ICONS[key].grupo === grupo).map((key) => (
+                  <button
+                    key={key}
+                    type="button"
+                    title={ICONS[key].label}
+                    aria-label={ICONS[key].label}
+                    aria-pressed={draft.icon === key}
+                    onClick={() => {
+                      setIconTouched(true)
+                      set({ icon: key })
+                    }}
+                    className={`grid aspect-square place-items-center rounded-xl border-2 transition ${draft.icon === key ? 'border-cobre bg-cobre/15' : 'border-transparent bg-papel hover:border-linea'}`}
+                  >
+                    <LinkIcon name={key} />
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
         </fieldset>
         {move && <MoveControls {...move} />}
       </div>

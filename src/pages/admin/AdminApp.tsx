@@ -38,7 +38,7 @@ export default function AdminApp() {
           <header className="sticky top-0 z-20 border-b border-linea bg-white/95 pt-[env(safe-area-inset-top)] backdrop-blur">
             <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
               <div className="flex-1">
-                <p className="font-display text-[1.4rem] leading-none">al aire</p>
+                <p className="font-display text-[1.4rem] leading-none">Al Aire Gastrobar</p>
                 <p className="text-xs text-gris">Panel de administración</p>
               </div>
               <a href="#/" target="_blank" rel="noopener" aria-label="Ver página (se abre en otra pestaña)" className="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-xl px-3 text-sm font-semibold transition-colors hover:bg-papel">
