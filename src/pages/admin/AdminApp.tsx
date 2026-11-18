@@ -41,7 +41,7 @@ export default function AdminApp() {
                 <p className="font-display text-[1.4rem] leading-none">Al Aire Gastrobar</p>
                 <p className="text-xs text-gris">Panel de administración</p>
               </div>
-              <a href="#/" target="_blank" rel="noopener" aria-label="Ver página (se abre en otra pestaña)" className="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-xl px-3 text-sm font-semibold transition-colors hover:bg-papel">
+              <a href="/" target="_blank" rel="noopener" aria-label="Ver página (se abre en otra pestaña)" className="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-xl px-3 text-sm font-semibold transition-colors hover:bg-papel">
                 <ExternalLink size={17} /> <span className="hidden sm:inline">Ver página</span>
               </a>
               <button type="button" onClick={signOut} aria-label="Cerrar sesión" className="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-xl px-3 text-sm font-semibold text-gris transition-colors hover:bg-papel hover:text-tinta" title="Cerrar sesión">

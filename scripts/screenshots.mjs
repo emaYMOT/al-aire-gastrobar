@@ -9,13 +9,13 @@ await mkdir(out, { recursive: true })
 
 const viewports = { movil: { width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, escritorio: { width: 1440, height: 900 } }
 const pages = [
-  ['inicio', '#/'],
-  ['carta', '#/carta'],
-  ['categoria', '#/carta/c3'],
-  ['admin-botones', '#/admin/botones'],
-  ['admin-carta', '#/admin/carta'],
-  ['admin-categoria', '#/admin/carta/c2'],
-  ['admin-perfil', '#/admin/perfil'],
+  ['inicio', ''],
+  ['carta', 'carta'],
+  ['categoria', 'carta/c3'],
+  ['admin-botones', 'admin/botones'],
+  ['admin-carta', 'admin/carta'],
+  ['admin-categoria', 'admin/carta/c2'],
+  ['admin-perfil', 'admin/perfil'],
 ]
 
 const browser = await chromium.launch()
@@ -33,8 +33,8 @@ for (const [vpName, vp] of Object.entries(viewports)) {
     data.session = { email: 'demo' }
     localStorage.setItem('alaire-demo-v2', JSON.stringify(data))
   })
-  for (const [name, hash] of pages) {
-    await page.goto(base + hash)
+  for (const [name, ruta] of pages) {
+    await page.goto(base + ruta)
     await page.waitForTimeout(1600)
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)
     await page.screenshot({ path: `${out}/${vpName}-${name}.png`, fullPage: name !== 'inicio' })

@@ -1,11 +1,11 @@
 import { lazy, Suspense } from 'react'
-import { createHashRouter, Outlet, RouterProvider, ScrollRestoration, useLocation } from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration, useLocation } from 'react-router-dom'
 import HeroBackground from './components/HeroBackground'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
 import MenuCategory from './pages/MenuCategory'
 
-// El panel se descarga solo cuando alguien entra a #/admin.
+// El panel se descarga solo cuando alguien entra a /admin.
 const Admin = lazy(() => import('./pages/admin/AdminApp'))
 
 // Al volver atrás, cada página recupera la posición donde la persona estaba.
@@ -22,7 +22,7 @@ function Root() {
   )
 }
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     element: <Root />,
     children: [

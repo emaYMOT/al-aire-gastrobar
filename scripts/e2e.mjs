@@ -10,7 +10,7 @@ const errors = []
 page.on('pageerror', (e) => errors.push(e.message))
 const step = (name) => console.log('✓', name)
 
-await page.goto(base + '#/admin')
+await page.goto(base + 'admin')
 await page.evaluate(() => localStorage.clear())
 await page.reload()
 await page.getByRole('button', { name: 'Entrar al modo demo' }).click()
@@ -129,7 +129,7 @@ await page.getByText('Perfil guardado').waitFor()
 step('edita el perfil')
 
 // Página pública.
-await page.goto(base + '#/')
+await page.goto(base)
 await page.getByRole('heading', { name: 'Al Aire Gastrobar 13' }).waitFor()
 assert.equal(await page.getByRole('link', { name: 'Instagram' }).count(), 0)
 await page.getByRole('link', { name: 'Pide a domicilio' }).waitFor()
@@ -146,7 +146,7 @@ await page.screenshot({ path: 'screenshots/e2e-publico-brunch.png', fullPage: tr
 step('carta pública muestra la categoría nueva, la sección y el plato agotado')
 
 // Reordenar arrastrando (teclado: espacio, flecha, espacio).
-await page.goto(base + '#/admin/botones')
+await page.goto(base + 'admin/botones')
 await page.getByRole('heading', { name: 'Botones de inicio' }).waitFor()
 const first = async () => (await page.locator('ul > li').first().innerText()).split('\n')[0]
 const before = await first()

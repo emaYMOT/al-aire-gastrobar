@@ -6,17 +6,17 @@ import { chromium } from 'playwright'
 
 const base = process.argv[2] ?? 'http://localhost:5173/'
 const pages = [
-  ['Inicio', '#/'],
-  ['Carta', '#/carta'],
-  ['Categoría', '#/carta/c2'],
-  ['Login', '#/admin', { loggedOut: true }],
-  ['Admin botones', '#/admin/botones'],
-  ['Admin carta', '#/admin/carta'],
-  ['Admin categoría', '#/admin/carta/c2'],
-  ['Admin perfil', '#/admin/perfil'],
-  ['Modal botón', '#/admin/botones', { open: 'Agregar botón' }],
-  ['Modal plato', '#/admin/carta/c2', { open: 'Agregar plato' }],
-  ['Modal categoría', '#/admin/carta', { open: 'Agregar categoría' }],
+  ['Inicio', ''],
+  ['Carta', 'carta'],
+  ['Categoría', 'carta/c2'],
+  ['Login', 'admin', { loggedOut: true }],
+  ['Admin botones', 'admin/botones'],
+  ['Admin carta', 'admin/carta'],
+  ['Admin categoría', 'admin/carta/c2'],
+  ['Admin perfil', 'admin/perfil'],
+  ['Modal botón', 'admin/botones', { open: 'Agregar botón' }],
+  ['Modal plato', 'admin/carta/c2', { open: 'Agregar plato' }],
+  ['Modal categoría', 'admin/carta', { open: 'Agregar categoría' }],
 ]
 
 const viewports = [
@@ -103,14 +103,14 @@ function inspect() {
 const browser = await chromium.launch()
 let problems = 0
 for (const [vpName, viewport] of viewports) {
-  for (const [name, hash, opts = {}] of pages) {
+  for (const [name, ruta, opts = {}] of pages) {
     const ctx = await browser.newContext({ viewport, hasTouch: true, isMobile: true })
     const page = await ctx.newPage()
     await page.goto(base)
     await page.evaluate((loggedOut) => {
       localStorage.setItem('alaire-demo-v2', JSON.stringify(loggedOut ? {} : { session: { email: 'demo' } }))
     }, !!opts.loggedOut)
-    await page.goto(base + hash)
+    await page.goto(base + ruta)
     await page.waitForTimeout(1300)
     if (opts.open) { await page.getByRole('button', { name: opts.open }).first().click(); await page.waitForTimeout(400) }
     const r = await page.evaluate(inspect)
