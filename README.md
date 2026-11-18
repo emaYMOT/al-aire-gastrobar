@@ -81,7 +81,7 @@ Para crear un proyecto nuevo desde cero: **Workers & Pages → Create → Pages 
 
 Las direcciones son reales (`/carta`, `/admin`), sin el `#/`. El archivo [`public/_redirects`](public/_redirects) le dice a Cloudflare que devuelva `index.html` en cualquier ruta, y `vite.config.ts` sirve los assets desde la raíz (`/`).
 
-> Esto es propio de Cloudflare Pages: GitHub Pages no respeta `_redirects` y publica en una subcarpeta. Si algún día vuelves a GitHub Pages habría que volver a `createHashRouter` y `base: './'`. El flujo [`deploy.yml`](.github/workflows/deploy.yml) sigue en el repo, pero ya no publica las rutas limpias.
+> Esto es propio de Cloudflare Pages: GitHub Pages no respeta `_redirects` y publica en una subcarpeta. Si algún día vuelves a GitHub Pages habría que volver a `createHashRouter` y `base: './'`. El sitio de GitHub Pages y su flujo de deploy fueron desactivados; Cloudflare es el único sitio publicado.
 
 **Supabase en pausa:** el plan gratis pausa los proyectos tras unos 7 días sin uso. El flujo [`keepalive.yml`](.github/workflows/keepalive.yml) hace una consulta cada 3 días para evitarlo (sigue activo aunque el sitio se publique en Cloudflare, porque vive en GitHub Actions).
 
